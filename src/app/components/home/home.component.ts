@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
   constructor(private propertyService: PropertyService) {
     this.storage = window.localStorage;
     this.client = new Client({});     // O cliente vai ser fixo? Vou buscar no banco?
-    this.properties = [ 
+    this.properties = [
       {
         id: '1',
         title: 'House 1 bedroom',
@@ -55,11 +55,31 @@ export class HomeComponent implements OnInit {
 
       }
     ];
-   }
+  }
 
   ngOnInit() {
-    this.propertyService.getUser() 
+    this.propertyService.getUser()
     console.log(this.properties)
+  }
+
+  addToFavorites(property) {
+
+    if (this.storage.getItem("favorites")) {
+      console.log('storage já tem registro')
+      let tempFaves = JSON.parse(this.storage.getItem("favorites"))
+      tempFaves.push(property)
+      this.storage.setItem("favorites", JSON.stringify(tempFaves))
+    } else {
+      console.log('storage vazio')
+      this.storage.setItem("favorites", "[]")
+      let tempFaves = JSON.parse(this.storage.getItem("favorites"))
+      tempFaves.push(property)
+      this.storage.setItem("favorites", JSON.stringify(tempFaves))
+    }
+  }
+
+  removeAllFavorites() {
+    this.storage.removeItem("favorites")
   }
 
 }

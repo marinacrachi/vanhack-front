@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Property } from '../models/property';
 
 @Component({
   selector: 'app-favorites',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FavoritesComponent implements OnInit {
 
-  constructor() { }
+  private storage: Storage
+  public properties: Array<Property>;
+
+  constructor() {
+    this.storage = window.localStorage;
+    this.properties = JSON.parse(this.storage.getItem("favorites"))
+   }
 
   ngOnInit() {
+    console.log(this.properties)
   }
 
 }
