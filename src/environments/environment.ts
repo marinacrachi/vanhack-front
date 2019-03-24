@@ -4,7 +4,7 @@
 
 export const environment = {
   // origin: 'http://vanhack-api.cloud.org/',
-  origin: 'http://172.16.10.203:31514/',
+  origin: 'http://vanhack-api.cloud.org',
   production: false
 };
 

@@ -57,6 +57,12 @@ export class PipelineComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    setInterval(() => {
+      console.log('interval')
+      window.location.reload();
+    }, 30000);
+
     this.getPipelineInfo()
     this.getPipelineImage()
   }
