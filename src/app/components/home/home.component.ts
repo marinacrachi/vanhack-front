@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Client } from "../../models/client";
 import { Property } from '../../models/property';
 import { PropertyService } from '../../services/property.service'
+import { ClientService } from 'src/app/services/client.service';
 
 @Component({
   selector: 'app-home',
@@ -12,11 +13,17 @@ export class HomeComponent implements OnInit {
 
   private storage: Storage
   private client: Client;
-  public properties: Array<Property>;
+  public properties;
 
-  favoriteButton = 'assets/images/pipeline/favorite.png'
+  fav = 'assets/images/pipeline/favorite.png'
+  favoriteButton = ['assets/images/pipeline/noFavorite.png',
+                    'assets/images/pipeline/noFavorite.png',
+                    'assets/images/pipeline/noFavorite.png',
+                    'assets/images/pipeline/noFavorite.png',
+                    'assets/images/pipeline/noFavorite.png',
+                    'assets/images/pipeline/noFavorite.png']
 
-  constructor(private propertyService: PropertyService) {
+  constructor(private propertyService: PropertyService, private clientService: ClientService) {
     this.storage = window.localStorage;
     this.client = new Client({});
     this.properties = [
@@ -52,26 +59,43 @@ export class HomeComponent implements OnInit {
         address: 'Burnaby St.',
         propType: 'House',
         picture: 'http://lorempixel.com/400/400/city/'
+      },
+      {
+        id: '5',
+        title: 'Condo House 2 bedroom',
+        price: 150000,
+        address: 'Banff St.',
+        propType: 'Condo House',
+        picture: 'http://lorempixel.com/400/400/city/'
+
+      },
+      {
+        id: '6',
+        title: 'Condo House 2 bedroom',
+        price: 150000,
+        address: 'Banff St.',
+        propType: 'Condo House',
+        picture: 'http://lorempixel.com/400/400/city/'
+
       }
     ];
   }
 
   ngOnInit() {
     this.getAllProperties()
+    // this.clientService.getClient()
+    this.propertyService.getProperties()
+
     console.log(this.properties)
   }
 
   getAllProperties() {
-    this.propertyService.getProperties()
-    // this.propertyService.getProperties()
-    //   .subscribe((data: Property) => {
-    //     this.properties = data;
-    //   });
+    //  this.properties = this.propertyService.getProperties()
   }
 
-  addToFavorites(property) {
+  addToFavorites(property,i) {
 
-    alert("Added to favorites!")
+    this.favoriteButton[i] = this.fav
 
     if (this.storage.getItem("favorites")) {
       console.log('storage já tem registro')

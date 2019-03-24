@@ -1,19 +1,21 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Property } from '../models/property';
+import {environment} from '../../environments/environment'
 
 @Injectable()
 export class PropertyService {
-  private _path = "/"
+  private _path = environment.origin + "api/v1/immobile"
 
   constructor(private http: HttpClient) {
 
   }
 
   public getProperties() {
-    //subscribe
-    // return this.http.get(this._path)
-    return console.log('users')
+    this.http.get(this._path).subscribe((data) => {
+      console.log(data)
+      // return data
+    })
   }
 
 }

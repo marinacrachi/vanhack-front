@@ -18,6 +18,7 @@ export class PipelineComponent implements OnInit {
   public client: Client;
   public property: Property;
   public pipeline: Pipeline;
+  public pipelinePhase;
   public pipelineImage;
   public sidebarImage;
   public timelineImage;
@@ -30,7 +31,9 @@ export class PipelineComponent implements OnInit {
     private route: ActivatedRoute
   ) {
 
-    this.pipelineImage = 'assets/images/pipeline/information.png'
+
+    this.pipelinePhase = 0;
+    this.pipelineImage = 'assets/images/pipeline/' + this.pipelinePhase + '.png'
     this.sidebarImage = 'assets/images/pipeline/information.png'
     this.timelineImage = 'assets/images/pipeline/activities.png'
 
@@ -54,25 +57,12 @@ export class PipelineComponent implements OnInit {
   }
 
   ngOnInit() {
-
-    // da get na pipeline
     this.getPipelineInfo()
-    // return pipeline
-  }
-
-  getClientByInfo() {
-    // this.clientService.getClientById()
-    // fazer um subscribe e popular o cliente
-  }
-
-  getPropertyInfo() {
-    // this.propertyService.getPropertyById()
-    // fazer um subscribe e popular o imóvel
+    this.getPipelineImage()
   }
 
   getPipelineInfo() {
     this.pipelineService.getPipeline()
-    // fazer um subscribe e com o them popular as informações do usuário e a pipeline image
     this.pipeline = {
       idClient: '1',
       idProperty: '1',
@@ -85,17 +75,14 @@ export class PipelineComponent implements OnInit {
 
   getPipelineImage() {
     switch (this.pipeline.status) {
-      case '1':
+      case 'SCHEDULE_VISIT':
         this.pipelineImage = 'assets/images/pipeline/1.png'
         break;
-      case '2':
+      case 'WAITING_MORTGAGE_LOAN_APPROVAL':
         this.pipelineImage = 'assets/images/pipeline/2.png'
         break;
-      case '3':
+      case 'APPROVED3':
         this.pipelineImage = 'assets/images/pipeline/3.png'
-        break;
-      case '4':
-        this.pipelineImage = 'assets/images/pipeline/4.png'
         break;
       default:
         this.pipelineImage = 'assets/images/pipeline/1.png'
@@ -105,5 +92,6 @@ export class PipelineComponent implements OnInit {
   postQuestion(){
     alert("Question sent!")
   }
+  
 
 }

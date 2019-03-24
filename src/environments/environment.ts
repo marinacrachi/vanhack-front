@@ -3,7 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  origin: 'http://18.228.150.147:31514/',
+  // origin: 'http://vanhack-api.cloud.org/',
+  origin: 'http://172.16.10.203:31514/',
   production: false
 };
 

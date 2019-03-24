@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
 import { Property } from '../../models/property';
+import { PipelineService } from 'src/app/services/pipeline.service';
 
 @Component({
   selector: 'app-favorites',
@@ -13,7 +14,7 @@ export class FavoritesComponent implements OnInit {
   public properties: Array<Property>;
   scheduleButton = 'assets/images/pipeline/scheduleButton.png'
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private pipelineService: PipelineService) {
     // fazer o request para o servidor
     this.storage = window.localStorage;
     this.properties = JSON.parse(this.storage.getItem("favorites"))
@@ -27,16 +28,8 @@ export class FavoritesComponent implements OnInit {
 
     console.log(property)
 
-    let pipeline = {
-        idClient: '1',
-        idProperty: '1',
-        agentName: 'Mary Jane',
-        status: '2'
-      }
-
-      alert("Check out your pipeline!")
+      this.pipelineService.postOffer(property)
     
-    // dá post na property pra pipeline
   }
 
   removeAllFavorites() {

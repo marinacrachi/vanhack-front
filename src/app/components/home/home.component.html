@@ -1,5 +1,5 @@
 <div class="container">
-    <div id="imoveis" *ngFor="let property of properties">
+    <div id="imoveis" *ngFor="let property of properties; let i = index">
         <div class="imovel">
             <h3>{{ property.title }}</h3>
             <img [src]="property.picture">
@@ -7,7 +7,7 @@
             <div>Address: {{ property.address }}</div>
             <div>Property type: {{ property.propType }}</div>
             <br>
-            <img [src]="favoriteButton" (click)="addToFavorites(property)">
+            <img [src]="favoriteButton[i]" (click)="addToFavorites(property,i)">
         </div>
     </div>
 </div>
