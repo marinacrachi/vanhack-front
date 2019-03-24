@@ -1,3 +1,16 @@
-<p>
-  favorites works!
-</p>
+<div class="container">
+    <div id="imoveis" *ngFor="let property of properties">
+        <div class="imovel">
+            <h3>{{ property.title }}</h3>
+            <img [src]="property.picture">
+            <div>Price: ${{ property.price }} CAD</div>
+            <div>Address: {{ property.address }}</div>
+            <div>Property type: {{ property.propType }}</div>
+            <br>
+            <img [src]="scheduleButton" (click)="beginPipeline(property)" routerLink="/pipeline" routerLinkActive="active">
+        </div>
+    </div>
+</div>
+<br><br><br>
+
+<button (click)="removeAllFavorites()">Remove All Favorites</button>

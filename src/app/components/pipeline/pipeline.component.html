@@ -1,3 +1,33 @@
-<p>
-  pipeline works!
-</p>
+<div class="container">
+
+  <div class="sidebar">
+
+    <div class="pipeline">
+      <img class="pipeline-image" [src]="pipelineImage" style="width: 400px">
+    </div>
+
+    <div class="information">
+
+      <div class="information-detail">
+        <img [src]="sidebarImage" style="width: 400px">
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="timeline">
+    <div class="question">
+      <p>Post a question to your agent:</p>
+      <input type="text"><br>
+      <button (click)="postQuestion()">Send</button>
+    </div>
+
+    <div class="process-info">
+      <div class="process-item">
+        <img [src]="timelineImage">
+      </div>
+    </div>
+  </div>
+
+</div>
