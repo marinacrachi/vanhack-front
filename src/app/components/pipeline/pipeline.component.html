@@ -3,21 +3,14 @@
   <div class="sidebar">
 
     <div class="pipeline">
-      <img [src]="pipelineImage">
+      <!-- teste -->
+      <img class="pipeline-image" [src]="pipelineImage" style="width: 400px">
     </div>
 
     <div class="information">
 
       <div class="information-detail">
-        <h4>{{ client.name }}</h4>
-        <div>{{ client.wage }}/year</div>
-        <div>{{ client.email }}</div>
-      </div>
-
-      <br><br>
-      
-      <div class="information-detail">
-        <h4>Real Estate Agent</h4>
+        <img [src]="sidebarImage" style="width: 400px">
       </div>
 
     </div>
@@ -32,7 +25,9 @@
     </div>
 
     <div class="process-info">
-      process info
+      <div class="process-item">
+        <img [src]="timelineImage">
+      </div>
     </div>
   </div>
 

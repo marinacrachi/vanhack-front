@@ -14,9 +14,11 @@ export class HomeComponent implements OnInit {
   private client: Client;
   public properties: Array<Property>;
 
+  favoriteButton = 'assets/images/pipeline/favorite.png'
+
   constructor(private propertyService: PropertyService) {
     this.storage = window.localStorage;
-    this.client = new Client({});     // O cliente vai ser fixo? Vou buscar no banco?
+    this.client = new Client({});
     this.properties = [
       {
         id: '1',
@@ -25,7 +27,6 @@ export class HomeComponent implements OnInit {
         address: 'Montreal St.',
         propType: 'House',
         picture: 'http://lorempixel.com/400/400/city/'
-
       },
       {
         id: '2',
@@ -43,7 +44,6 @@ export class HomeComponent implements OnInit {
         address: 'Mt. Tremblant St.',
         propType: 'Apartment',
         picture: 'http://lorempixel.com/400/400/city/'
-
       },
       {
         id: '4',
@@ -52,7 +52,6 @@ export class HomeComponent implements OnInit {
         address: 'Burnaby St.',
         propType: 'House',
         picture: 'http://lorempixel.com/400/400/city/'
-
       }
     ];
   }
@@ -71,6 +70,8 @@ export class HomeComponent implements OnInit {
   }
 
   addToFavorites(property) {
+
+    alert("Added to favorites!")
 
     if (this.storage.getItem("favorites")) {
       console.log('storage já tem registro')

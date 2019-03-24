@@ -19,16 +19,20 @@ export class PipelineComponent implements OnInit {
   public property: Property;
   public pipeline: Pipeline;
   public pipelineImage;
+  public sidebarImage;
+  public timelineImage;
 
   constructor(
     private propertyService: PropertyService,
     private clientService: ClientService,
     private pipelineService: PipelineService,
-    private router:Router, 
+    private router:Router,  
     private route: ActivatedRoute
   ) {
 
-    this.pipelineImage = 'assets/images/1.png'
+    this.pipelineImage = 'assets/images/pipeline/information.png'
+    this.sidebarImage = 'assets/images/pipeline/information.png'
+    this.timelineImage = 'assets/images/pipeline/activities.png'
 
     this.client = {
       id: '1',
@@ -73,7 +77,7 @@ export class PipelineComponent implements OnInit {
       idClient: '1',
       idProperty: '1',
       agentName: 'Mary Jane',
-      status: '2'
+      status: '1'
     }
 
     this.getPipelineImage()
@@ -82,19 +86,19 @@ export class PipelineComponent implements OnInit {
   getPipelineImage() {
     switch (this.pipeline.status) {
       case '1':
-        this.pipelineImage = 'assets/images/1.png'
+        this.pipelineImage = 'assets/images/pipeline/1.png'
         break;
       case '2':
-        this.pipelineImage = 'assets/images/2.png'
+        this.pipelineImage = 'assets/images/pipeline/2.png'
         break;
       case '3':
-        this.pipelineImage = 'assets/images/3.png'
+        this.pipelineImage = 'assets/images/pipeline/3.png'
         break;
       case '4':
-        this.pipelineImage = 'assets/images/4.png'
+        this.pipelineImage = 'assets/images/pipeline/4.png'
         break;
       default:
-        this.pipelineImage = 'assets/images/1.png'
+        this.pipelineImage = 'assets/images/pipeline/1.png'
     }
   }
 

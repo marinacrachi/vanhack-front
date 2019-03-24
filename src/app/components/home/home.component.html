@@ -1,12 +1,13 @@
 <div class="container">
     <div id="imoveis" *ngFor="let property of properties">
         <div class="imovel">
-            <h1>{{ property.title }}</h1>
+            <h3>{{ property.title }}</h3>
             <img [src]="property.picture">
-            <h3>{{ property.price }}</h3>
-            <h4>{{ property.address }}</h4>
-            <h4>{{ property.propType }}</h4>
-            <button (click)="addToFavorites(property)">S2</button>
+            <div>Price: ${{ property.price }} CAD</div>
+            <div>Address: {{ property.address }}</div>
+            <div>Property type: {{ property.propType }}</div>
+            <br>
+            <img [src]="favoriteButton" (click)="addToFavorites(property)">
         </div>
     </div>
 </div>

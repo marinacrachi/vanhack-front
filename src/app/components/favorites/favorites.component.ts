@@ -11,6 +11,7 @@ export class FavoritesComponent implements OnInit {
 
   private storage: Storage;
   public properties: Array<Property>;
+  scheduleButton = 'assets/images/pipeline/scheduleButton.png'
 
   constructor(private router: Router) {
     // fazer o request para o servidor
