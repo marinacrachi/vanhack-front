@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Client } from "../models/client";
-import { Property } from '../models/property';
-import { PropertyService } from '../services/property.service'
+import { Client } from "../../models/client";
+import { Property } from '../../models/property';
+import { PropertyService } from '../../services/property.service'
 
 @Component({
   selector: 'app-home',
@@ -58,8 +58,16 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.propertyService.getUser()
+    this.getAllProperties()
     console.log(this.properties)
+  }
+
+  getAllProperties() {
+    this.propertyService.getProperties()
+    // this.propertyService.getProperties()
+    //   .subscribe((data: Property) => {
+    //     this.properties = data;
+    //   });
   }
 
   addToFavorites(property) {
@@ -76,10 +84,6 @@ export class HomeComponent implements OnInit {
       tempFaves.push(property)
       this.storage.setItem("favorites", JSON.stringify(tempFaves))
     }
-  }
-
-  removeAllFavorites() {
-    this.storage.removeItem("favorites")
   }
 
 }

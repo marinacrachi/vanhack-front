@@ -6,7 +6,10 @@
             <h3>{{ property.price }}</h3>
             <h4>{{ property.address }}</h4>
             <h4>{{ property.propType }}</h4>
-            <button (click)="beginPipeline(property)">Start!</button>
+            <button (click)="beginPipeline(property)" routerLink="/pipeline" routerLinkActive="active">Start!</button>
         </div>
     </div>
 </div>
+<br><br><br>
+
+<button (click)="removeAllFavorites()">Remove All Favorites</button>

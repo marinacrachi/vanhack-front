@@ -1,3 +1,39 @@
-<p>
-  pipeline works!
-</p>
+<div class="container">
+
+  <div class="sidebar">
+
+    <div class="pipeline">
+      <img [src]="pipelineImage">
+    </div>
+
+    <div class="information">
+
+      <div class="information-detail">
+        <h4>{{ client.name }}</h4>
+        <div>{{ client.wage }}/year</div>
+        <div>{{ client.email }}</div>
+      </div>
+
+      <br><br>
+      
+      <div class="information-detail">
+        <h4>Real Estate Agent</h4>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="timeline">
+    <div class="question">
+      <p>Post a question to your agent:</p>
+      <input type="text"><br>
+      <button (click)="postQuestion()">Send</button>
+    </div>
+
+    <div class="process-info">
+      process info
+    </div>
+  </div>
+
+</div>
